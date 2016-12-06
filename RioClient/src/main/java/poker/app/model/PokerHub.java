@@ -97,8 +97,7 @@ public class PokerHub extends Hub {
 								try {
 									HubGamePlay.drawCard(p, cd.getCardDestination());
 								} catch (DeckException e) {
-									// Whoops! Exception was throw... send it
-									// back to the client
+									// Exception was throw
 									resetOutput();
 									sendToAll(e);
 									e.printStackTrace();
@@ -115,8 +114,7 @@ public class PokerHub extends Hub {
 							try {
 								HubGamePlay.drawCard(p, cd.getCardDestination());
 							} catch (DeckException e) {
-								// Whoops! Exception was throw... send it
-								// back to the client
+								// Exception was throw
 								resetOutput();
 								sendToAll(e);
 								e.printStackTrace();
@@ -131,20 +129,7 @@ public class PokerHub extends Hub {
 				resetOutput();
 				sendToAll(HubGamePlay);
 				break;
-			case ScoreGame:
-				// Am I at the end of the game?
-				try {
-					HubGamePlay.ScoreGame();
-					HubGamePlay.seteGameState(eGameState.SCORED);
-				} catch (HandException e) {
-					resetOutput();
-					sendToAll(e);
-					e.printStackTrace();
-					return;
-				}
-				resetOutput();
-				sendToAll(HubGamePlay);
-				break;
+			
 			}
 			
 		}

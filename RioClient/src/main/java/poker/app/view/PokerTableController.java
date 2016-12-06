@@ -410,16 +410,7 @@ public class PokerTableController implements Initializable {
 
 		}
 
-		if (HubPokerGame.geteGameState() == eGameState.FINISHED) {
-			Action act = new Action(eAction.ScoreGame, mainApp.getPlayer());
-			// Send the Action to the Hub
-			mainApp.messageSend(act);
-		} else if (HubPokerGame.geteGameState() == eGameState.SCORED) {
-			lblWinningPlayer.setText(HubPokerGame.GetWinningHand().getHandPlayer().getPlayerName());
-			HandScore hs = HubPokerGame.GetWinningHand().getHandScore();
-			lblWinningHand.setText(eHandStrength.geteHandStrength(hs.getHandStrength()).toString() + " "
-					+ eRank.geteRank(hs.getHiHand()).toString());
-		}
+		
 	}
 
 	/**
@@ -498,10 +489,10 @@ public class PokerTableController implements Initializable {
 	void btnDeal_Click(ActionEvent event) {
 
 		// Set the new Deal action
-		Action act = new Action(eAction.Draw, mainApp.getPlayer());
+		//Action act = new Action(eAction.Draw, mainApp.getPlayer());
 
 		// Send the Action to the Hub
-		mainApp.messageSend(act);
+	//	mainApp.messageSend(act);
 
 	}
 
